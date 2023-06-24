@@ -2,8 +2,8 @@ import requests
 import json
 
 # Freshworks API credentials
-api_key = '5Op5EpT4sD77WUQOCUe1'
-domain = 'bmegroup.'
+api_key = 
+domain = 
 ticket_endpoint = f'https://bmegroup.freshservice.com/api/v2/tickets'
 
 # Ticket data
