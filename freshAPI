@@ -1,0 +1,34 @@
+import requests
+import json
+
+# Freshworks API credentials
+api_key = '5Op5EpT4sD77WUQOCUe1'
+domain = 'bmegroup.'
+ticket_endpoint = f'https://bmegroup.freshservice.com/api/v2/tickets'
+
+# Ticket data
+ticket_data = {
+    'subject': 'API test',
+    'description': 'This is a new ticket created via API',
+    'email': 'marcel.ferdinand@bmn.nl',
+    'priority': 1,
+    'status': 2
+}
+
+# Set headers
+headers = {
+    'Content-Type': 'application/json'
+}
+
+# Make API request to create ticket
+response = requests.post(ticket_endpoint, auth=(api_key, ''), headers=headers, data=json.dumps(ticket_data))
+
+# Check response status
+if response.status_code == 201:
+    print('Ticket created successfully')
+    ticket = response.json()
+    print(ticket)
+    print(f'Ticket ID: {ticket["id"]}')
+else:
+    print('Failed to create ticket')
+    print(f'Response: {response.status_code} - {response.text}')
